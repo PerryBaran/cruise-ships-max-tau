@@ -11,7 +11,7 @@ describe('has a passengers property',() => {
     it('returns the number of passengers on board the Ship', () => {
         const boaty = new Ship(25);
 
-        expect(boaty.passengers).toBe(25)
+        expect(boaty.passengers).toBe(25);
     })
 });
 
@@ -30,13 +30,13 @@ describe('has a boardPassengers method',() => {
     it('increases passenger number by a specified amount', () => {
         const boaty = new Ship(0, 'Hong Kong');
 
-        expect(boaty.passengers).toBe(0)
+        expect(boaty.passengers).toBe(0);
         boaty.boardPassengers(17);
 
-        expect(boaty.passengers).toBe(17)
+        expect(boaty.passengers).toBe(17);
         boaty.boardPassengers(8);
 
-        expect(boaty.passengers).toBe(25)
+        expect(boaty.passengers).toBe(25);
     })
 });
 
@@ -45,7 +45,18 @@ describe('has a setSail method', () => {
         const boaty = new Ship(20, 'Hong Kong');
         boaty.setSail()
 
-        expect(boaty.startingPort).toBeFalsy();
+        expect(boaty.currentPort).toBeFalsy();
+    })
+});
+
+describe('has a dock method', () => {
+    it('allows the Ship to dock in a new port', () => {
+        const startingPort = new Port('Hong Kong');
+        const boaty = new Ship(0, startingPort.name);
+        const port = new Port('Kuala Lumpur');
+        boaty.dock(port.name);
+
+        expect(boaty.currentPort).toBe('Kuala Lumpur');
     })
 });
 

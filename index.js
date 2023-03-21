@@ -10,6 +10,9 @@ class Ship {
     setSail(){
         return this.currentPort = null
     }
+    dock(newPort){
+        this.currentPort = newPort
+    }
 };
 
 class Port {
