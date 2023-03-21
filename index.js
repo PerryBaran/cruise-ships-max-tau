@@ -1,13 +1,14 @@
 class Ship {
-    constructor(passengers, startingPort,){
+    constructor(passengers, currentPort){
         this.passengers = passengers,
-        this.startingPort = startingPort
+        this.currentPort = currentPort
     }
+
     boardPassengers(newPassengers){
         return this.passengers += newPassengers;
     }
     setSail(){
-        return this.startingPort = null
+        return this.currentPort = null
     }
 };
 

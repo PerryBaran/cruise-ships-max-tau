@@ -18,8 +18,11 @@ describe('has a passengers property',() => {
 describe('has a starting port property',() => {
     it('returns the starting port of the Ship', () => {
         const boaty = new Ship(0, 'Hong Kong');
+        const port = new Port('Kuala Lumpur');
+        const steamboat = new Ship(0, port.name);
 
-        expect(boaty.startingPort).toBe('Hong Kong')
+        expect(boaty.currentPort).toBe('Hong Kong');
+        expect(steamboat.currentPort).toBe('Kuala Lumpur')
     })
 });
 
@@ -44,4 +47,5 @@ describe('has a setSail method', () => {
 
         expect(boaty.startingPort).toBeFalsy();
     })
-})
+});
+
