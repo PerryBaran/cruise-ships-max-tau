@@ -1,8 +1,9 @@
-const Ship = require('./index');
+/* globals describe it expect */
+const Ship = require('../index');
 
 describe('constructor', () => {
     it ('returns an object', () => {
-        expect(new Ship('Boaty')).toBeInstanceOf(Object);
+        expect(new Ship()).toBeInstanceOf(Object);
     })
 });
 
@@ -35,3 +36,12 @@ describe('has a boardPassengers method',() => {
         expect(boaty.passengers).toBe(25)
     })
 });
+
+describe('has a setSail method', () => {
+    it('makes the Ship leave the port that it is currently in', () => {
+        const boaty = new Ship(20, 'Hong Kong');
+        boaty.setSail('Kuala Lumpur')
+
+        expect(boaty.state).toBe('Sailing to Kuala Lumpur')
+    })
+})
