@@ -11,4 +11,13 @@ class Ship {
     }
 };
 
-module.exports = Ship
+class Port {
+    constructor(name){
+        this.name = name
+    }
+}
+
+module.exports = {
+    Ship,
+    Port,
+}
