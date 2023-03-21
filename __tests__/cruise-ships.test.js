@@ -40,8 +40,8 @@ describe('has a boardPassengers method',() => {
 describe('has a setSail method', () => {
     it('makes the Ship leave the port that it is currently in', () => {
         const boaty = new Ship(20, 'Hong Kong');
-        boaty.setSail('Kuala Lumpur')
+        boaty.setSail()
 
-        expect(boaty.state).toBe('Sailing to Kuala Lumpur')
+        expect(boaty.startingPort).toBe('Departed Hong Kong')
     })
 })
