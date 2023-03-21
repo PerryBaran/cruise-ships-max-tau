@@ -7,7 +7,7 @@ class Ship {
         return this.passengers += newPassengers;
     }
     setSail(){
-        return this.startingPort = `Departed ${this.startingPort}`
+        return this.startingPort = null
     }
 };
 

@@ -42,6 +42,6 @@ describe('has a setSail method', () => {
         const boaty = new Ship(20, 'Hong Kong');
         boaty.setSail()
 
-        expect(boaty.startingPort).toBe('Departed Hong Kong')
+        expect(boaty.startingPort).toBeFalsy();
     })
 })
