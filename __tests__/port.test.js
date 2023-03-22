@@ -1,5 +1,5 @@
 /* globals describe it expect */
-const {Ship, Port} = require('../index');
+const {Port} = require('../index');
 
 describe('Port', () => {
     it('returns an object', () => {

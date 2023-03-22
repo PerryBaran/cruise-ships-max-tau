@@ -1,15 +1,22 @@
 /* globals describe it expect */
-const {Ship, Port} = require('../index');
+const { describe } = require('node:test');
+const {Ship, Port, Itinerary} = require('../index');
 
 describe('constructor', () => {
-    it ('returns an object', () => {
-        expect(new Ship()).toBeInstanceOf(Object);
+    it ('can be instantiated', () => {
+        const port = new Port('Hong Kong');
+        const itinerary = new Itinerary([port]);
+        const boaty = new Ship(0, itinerary);
+
+        expect(boaty).toBeInstanceOf(Object);
     })
 });
 
 describe('has a passengers property',() => {
     it('returns the number of passengers on board the Ship', () => {
-        const boaty = new Ship(25);
+        const port = new Port('Hong Kong');
+        const itinerary = new Itinerary([port]);
+        const boaty = new Ship(25, itinerary);
 
         expect(boaty.passengers).toBe(25);
     })
@@ -17,18 +24,19 @@ describe('has a passengers property',() => {
 
 describe('has a starting port property',() => {
     it('returns the starting port of the Ship', () => {
-        const boaty = new Ship(0, 'Hong Kong');
-        const port = new Port('Kuala Lumpur');
-        const steamboat = new Ship(0, port.name);
+        const port = new Port('Hong Kong');
+        const itinerary = new Itinerary([port]);
+        const boaty = new Ship(0, itinerary);
 
-        expect(boaty.currentPort).toBe('Hong Kong');
-        expect(steamboat.currentPort).toBe('Kuala Lumpur')
+        expect(boaty.currentPort).toBe(port)
     })
 });
 
 describe('has a boardPassengers method',() => {
     it('increases passenger number by a specified amount', () => {
-        const boaty = new Ship(0, 'Hong Kong');
+        const port = new Port('Hong Kong');
+        const itinerary = new Itinerary([port]);
+        const boaty = new Ship(0, itinerary);
 
         expect(boaty.passengers).toBe(0);
         boaty.boardPassengers(17);
@@ -42,21 +50,40 @@ describe('has a boardPassengers method',() => {
 
 describe('has a setSail method', () => {
     it('makes the Ship leave the port that it is currently in', () => {
-        const boaty = new Ship(20, 'Hong Kong');
+        const startingPort = new Port('Hong Kong');
+        const port = new Port('Singapore');
+        const itinerary = new Itinerary([startingPort, port]);
+        const boaty = new Ship(20, itinerary);
         boaty.setSail()
 
         expect(boaty.currentPort).toBeFalsy();
+        expect(boaty.previousPort).toBe(startingPort);
     })
 });
 
 describe('has a dock method', () => {
     it('allows the Ship to dock in a new port', () => {
         const startingPort = new Port('Hong Kong');
-        const boaty = new Ship(0, startingPort.name);
-        const port = new Port('Kuala Lumpur');
-        boaty.dock(port.name);
+        const port = new Port('Singapore');
+        const itinerary = new Itinerary([startingPort, port])
+        const boaty = new Ship(0, itinerary);
+        boaty.setSail();
+        boaty.dock();
 
-        expect(boaty.currentPort).toBe('Kuala Lumpur');
+        expect(boaty.currentPort).toBe(port);
     })
 });
 
+describe('cannot sail beyond last port in itinerary', () => {
+    it('returns an error message when ship tries to sail beyond last port', () => {
+        const startingPort = new Port('Hong Kong');
+        const port = new Port('Singapore');
+        const itinerary = new Itinerary([startingPort, port])
+        const boaty = new Ship(0, itinerary);
+
+        boaty.setSail();
+        boaty.dock();
+
+        expect(() => boaty.setSail()).toThrowError('This ship has reached its final destination')
+    })
+});
