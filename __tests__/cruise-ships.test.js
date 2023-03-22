@@ -58,6 +58,7 @@ describe('has a setSail method', () => {
 
         expect(boaty.currentPort).toBeFalsy();
         expect(boaty.previousPort).toBe(startingPort);
+        expect(boaty.previousPort.ships).not.toContain(boaty);
     })
 });
 
@@ -71,6 +72,7 @@ describe('has a dock method', () => {
         boaty.dock();
 
         expect(boaty.currentPort).toBe(port);
+        expect(boaty.currentPort.ships).toContain(boaty);
     })
 });
 
