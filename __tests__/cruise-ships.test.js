@@ -87,3 +87,14 @@ describe('cannot sail beyond last port in itinerary', () => {
         expect(() => boaty.setSail()).toThrowError('This ship has reached its final destination')
     })
 });
+
+describe('ship gets added to port on instantiation', () => {
+    it('adds a ship to the ships property of the port upon instantiation', () => {
+        const startingPort = new Port('Hong Kong');
+        const port = new Port('Singapore');
+        const itinerary = new Itinerary([startingPort, port])
+        const boaty = new Ship(0, itinerary);
+        
+        expect(boaty.currentPort.ships).toContain(boaty)
+    })
+})
