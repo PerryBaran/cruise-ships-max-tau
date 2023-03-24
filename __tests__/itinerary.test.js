@@ -9,10 +9,10 @@ describe('Itinerary',() => {
 
 describe('It has a ports property',() => {
     it('contains the ports in the order in which they will be visited', () => {
-        const startingPort = new Port('Hong Kong')
-        const firstStop = new Port('Singapore')
-        const asiaTrip = new Itinerary([startingPort, firstStop]);
+        const port = jest.fn();
+        const port2 = jest.fn();
+        const asiaTrip = new Itinerary([port, port2]);
                 
-        expect(asiaTrip.ports).toEqual([startingPort, firstStop]);
+        expect(asiaTrip.ports).toEqual([port, port2]);
     });
 });

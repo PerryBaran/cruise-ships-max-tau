@@ -14,22 +14,22 @@ describe('Ship', () => {
             port2 = new Port('Singapore')
             itinerary = new Itinerary([port, port2]);
             boaty = new Ship(25, itinerary);
-        })
+        });
 
         it ('can be instantiated', () => {
 
             expect(boaty).toBeInstanceOf(Object);
-        })
+        });
 
         it('returns the number of passengers on board the Ship', () => {
 
             expect(boaty.passengers).toBe(25);
-        })
+        });
 
         it('returns the starting port of the Ship', () => {
         
             expect(boaty.currentPort).toBe(port)
-        })
+        });
 
         it('increases passenger number by a specified amount', () => {
         
@@ -40,7 +40,7 @@ describe('Ship', () => {
             boaty.boardPassengers(8);
         
             expect(boaty.passengers).toBe(50);
-        })       
+        });    
         
         it('makes the Ship leave the port that it is currently in', () => {
 
@@ -49,7 +49,7 @@ describe('Ship', () => {
             expect(boaty.currentPort).toBeFalsy();
             expect(boaty.previousPort).toBe(port);
             expect(boaty.previousPort.ships).not.toContain(boaty);
-        })     
+        });   
         
         it('allows the Ship to dock in a new port', () => {
 
@@ -58,7 +58,7 @@ describe('Ship', () => {
         
             expect(boaty.currentPort).toBe(port2);
             expect(boaty.currentPort.ships).toContain(boaty);
-        })        
+        });
         
         it('returns an error message when ship tries to sail beyond last port', () => {
         
@@ -66,13 +66,13 @@ describe('Ship', () => {
             boaty.dock();
         
             expect(() => boaty.setSail()).toThrowError('This ship has reached its final destination')
-        })
+        });
 
         it('adds a ship to the ships property of the port upon instantiation', () => {
 
             expect(boaty.currentPort.ships).toContain(boaty)
-        })
-    })    
+        });
+    });
 });
 
 

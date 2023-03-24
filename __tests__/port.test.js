@@ -8,7 +8,7 @@ describe('Port', () => {
 
         beforeEach(() => {
             port = new Port('Hong Kong');
-            boaty = {};
+            boaty = jest.fn();
         });
 
         it('returns an object', () => {
