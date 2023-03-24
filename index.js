@@ -28,9 +28,6 @@ class Ship {
         this.currentPort = itinerary.ports[previousPortIndex + 1];
         this.currentPort.addShip(this)
     }
-    register(){
-
-    }
 };
 
 class Port {
