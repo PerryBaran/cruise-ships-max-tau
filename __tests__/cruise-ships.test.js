@@ -1,6 +1,6 @@
 /* globals describe it expect */
 const { describe } = require('node:test');
-const {Ship, Port, Itinerary} = require('../index');
+const {Ship, Itinerary} = require('../index');
 
 describe('Ship', () => {
     describe('Has ports and an itinerary', () => {
@@ -10,8 +10,8 @@ describe('Ship', () => {
         let boaty;
 
         beforeEach(() => {
-            port = new Port('Hong Kong');
-            port2 = new Port('Singapore')
+            port = { name: 'Hong Kong', ships: [], addShip: jest.fn(), removeShip: jest.fn() };
+            port2 = { name: 'Hong Kong', ships: [], addShip: jest.fn(), removeShip: jest.fn() };
             itinerary = new Itinerary([port, port2]);
             boaty = new Ship(25, itinerary);
         });
@@ -42,22 +42,22 @@ describe('Ship', () => {
             expect(boaty.passengers).toBe(50);
         });    
         
-        it('makes the Ship leave the port that it is currently in', () => {
+        it('can set sail', () => {
 
             boaty.setSail()
         
             expect(boaty.currentPort).toBeFalsy();
             expect(boaty.previousPort).toBe(port);
-            expect(boaty.previousPort.ships).not.toContain(boaty);
+            expect(port.removeShip).toHaveBeenCalledWith(boaty);
         });   
         
-        it('allows the Ship to dock in a new port', () => {
+        it('can dock at a different port', () => {
 
             boaty.setSail();
             boaty.dock();
         
             expect(boaty.currentPort).toBe(port2);
-            expect(boaty.currentPort.ships).toContain(boaty);
+            expect(port2.addShip).toHaveBeenCalledWith(boaty);
         });
         
         it('returns an error message when ship tries to sail beyond last port', () => {
@@ -68,9 +68,9 @@ describe('Ship', () => {
             expect(() => boaty.setSail()).toThrowError('This ship has reached its final destination')
         });
 
-        it('adds a ship to the ships property of the port upon instantiation', () => {
+        it('gets added to port on instantiation', () => {
 
-            expect(boaty.currentPort.ships).toContain(boaty)
+            expect(port.addShip).toHaveBeenCalledWith(boaty)
         });
     });
 });
