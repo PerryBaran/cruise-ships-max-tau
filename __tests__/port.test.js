@@ -1,5 +1,5 @@
 /* globals describe it expect */
-const {Port,} = require('../index');
+const {Port} = require('../index');
 
 describe('Port', () => {
     describe('Has a port and a ship', () => {

@@ -1,5 +1,5 @@
 /* globals describe it expect */
-const {Port, Itinerary} = require('../index');
+const {Itinerary} = require('../index');
 
 describe('Itinerary',() => {
     it('returns an object', () => {
@@ -11,8 +11,8 @@ describe('It has a ports property',() => {
     it('contains the ports in the order in which they will be visited', () => {
         const port = jest.fn();
         const port2 = jest.fn();
-        const asiaTrip = new Itinerary([port, port2]);
+        const itinerary = new Itinerary([port, port2]);
                 
-        expect(asiaTrip.ports).toEqual([port, port2]);
+        expect(itinerary.ports).toEqual([port, port2]);
     });
 });

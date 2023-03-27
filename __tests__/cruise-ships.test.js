@@ -1,6 +1,6 @@
 /* globals describe it expect */
 const { describe } = require('node:test');
-const {Ship, Itinerary} = require('../index');
+const {Ship} = require('../index');
 
 describe('Ship', () => {
     describe('Has ports and an itinerary', () => {
@@ -12,7 +12,7 @@ describe('Ship', () => {
         beforeEach(() => {
             port = { name: 'Hong Kong', ships: [], addShip: jest.fn(), removeShip: jest.fn() };
             port2 = { name: 'Hong Kong', ships: [], addShip: jest.fn(), removeShip: jest.fn() };
-            itinerary = new Itinerary([port, port2]);
+            itinerary = { ports: [port, port2]};
             boaty = new Ship(25, itinerary);
         });
 
@@ -28,7 +28,7 @@ describe('Ship', () => {
 
         it('returns the starting port of the Ship', () => {
         
-            expect(boaty.currentPort).toBe(port)
+            expect(boaty.currentPort).toBe(port);
         });
 
         it('increases passenger number by a specified amount', () => {
