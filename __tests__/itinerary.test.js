@@ -1,5 +1,5 @@
 /* globals describe it expect */
-const {Itinerary} = require('../index');
+const Itinerary = require('../src/itinerary');
 
 describe('Itinerary',() => {
     it('returns an object', () => {

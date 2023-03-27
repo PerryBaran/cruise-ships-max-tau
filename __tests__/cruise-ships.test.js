@@ -1,6 +1,6 @@
 /* globals describe it expect */
 const { describe } = require('node:test');
-const {Ship} = require('../index');
+const Ship = require('../src/ship');
 
 describe('Ship', () => {
     describe('Has ports and an itinerary', () => {
