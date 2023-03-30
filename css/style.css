@@ -19,8 +19,7 @@ body {
 }
 
 #ports {
-    width: 0px;
-    margin-top: 96 px;
+    margin-top: 96px;
     display: flex;
     justify-content: space-around;
 }

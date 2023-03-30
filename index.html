@@ -16,11 +16,14 @@
     </div>
     <script src="src/controller.js"></script>
     <script src="src/port.js"></script>
-    <script src="src/ship.js"></script>
     <script src="src/itinerary.js"></script>
     <script>
         const controller = new Controller ();
-        const itinerary = new Itinerary ([new Port ('Hong Kong'), new Port ('Singapore'),]); 
+        const itinerary = new Itinerary ([
+            new Port ('Hong Kong'),
+            new Port ('Singapore'),
+            new Port ('Colombo')
+        ]);
         controller.renderPorts(itinerary.ports);
     </script>
 
