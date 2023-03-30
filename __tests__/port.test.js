@@ -29,6 +29,7 @@ describe('Port', () => {
         it('when a ship sets sail from this port it is removed from the ships property', () => {
 
             port.addShip(boaty);
+            port.addShip(jest.fn())
             port.removeShip(boaty);
 
             expect(port.ships).not.toContain(boaty)
