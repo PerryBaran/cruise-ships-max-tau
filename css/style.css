@@ -50,3 +50,18 @@ body {
     margin-left: 220px;
     position: fixed;
 }
+
+#message {
+    padding: 8px;
+    font-family: 'Goldman', cursive;
+    font-weight: bold;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    border-bottom: 1px solid lightgray;
+    background-color: black;
+    color: green;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
