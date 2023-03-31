@@ -29,3 +29,24 @@ body {
     height: 32px;
     background-image: url('../images/port.png');
 }
+
+#ship {
+    width: 128px;
+    height: 64px;
+    position: absolute;
+    background-image: url('../images/ship.png');
+}
+
+#sailbutton {
+    width: 200px;
+    height: 26px;
+    font-family: 'Goldman', cursive;
+    font-weight: bold;
+    background-image: linear-gradient(to right, red, yellow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 75px;
+    margin-left: 220px;
+    position: fixed;
+}

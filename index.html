@@ -6,25 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/normalize.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
+    
     <title>Document</title>
 </head>
 <body>
     <div id="viewport">
         <div id="ports">
         </div>
+        <div id="ship">
+        </div>
+        <button id="sailbutton">Set sail!</button>
     </div>
     <script src="src/controller.js"></script>
     <script src="src/port.js"></script>
     <script src="src/itinerary.js"></script>
+    <script src="src/ship.js"></script>
     <script>
-        const controller = new Controller ();
         const itinerary = new Itinerary ([
             new Port ('Hong Kong'),
             new Port ('Singapore'),
             new Port ('Colombo')
         ]);
+        const boaty = new Ship (5, itinerary)
+        const controller = new Controller (boaty);
         controller.renderPorts(itinerary.ports);
+        controller.renderShip();
     </script>
 
 </body>
