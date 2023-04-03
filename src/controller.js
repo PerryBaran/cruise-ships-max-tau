@@ -7,9 +7,11 @@
             this.ship = ship;
 
             document.querySelector('#sailbutton').addEventListener('click', () => {
-                this.setSail()
-            });
-    }
+                if (!this.ship.currentPort) {
+                    this.renderMessage('We are already at sea!')
+                } else {this.setSail()}
+                })
+        }
 
         initialiseSea() {
             const backgrounds = [
@@ -53,7 +55,11 @@
                 this.renderMessage('You have reached your final destination.');
             } else {
             this.renderMessage(`Now departing ${ship.currentPort.name}`)
-            };
+            }
+
+            if(!this.ship.currentPort) {
+                document.querySelector('#sailbutton').setAttribute('disabled', 'disabled');
+            }
 
             const shipElement = document.querySelector('#ship');
             const sailInterval = setInterval(() => {
@@ -76,7 +82,6 @@
 
             const viewport = document.querySelector('#viewport');
             viewport.appendChild(messageElement);
-
 
             setTimeout(() => {
                 viewport.removeChild(messageElement)

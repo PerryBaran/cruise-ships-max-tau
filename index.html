@@ -14,7 +14,6 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="headsUp"></div>
     <div id="viewport">
         <div id="ports">
         </div>
@@ -30,13 +29,12 @@
         const itinerary = new Itinerary ([
             new Port ('Hong Kong'),
             new Port ('Singapore'),
-            new Port ('Colombo')
+            new Port ('Colombo'),
         ]);
         const boaty = new Ship (5, itinerary)
         const controller = new Controller (boaty);
         controller.renderPorts(itinerary.ports);
         controller.renderShip();
     </script>
-
 </body>
 </html>

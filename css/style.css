@@ -56,12 +56,12 @@ body {
     font-family: 'Goldman', cursive;
     font-weight: bold;
     position: absolute;
-    width: 100%;
     top: 0;
+    width: 100%;
     border-bottom: 1px solid lightgray;
     background-color: black;
     color: green;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
