@@ -121,6 +121,8 @@
                  
                 if (shipItinerary.find(destination => destination.name === userInput.value)) {
                     alert('This is already a stop on your voyage')
+                } else if (userInput.value === '') {
+                    alert('Please enter a valid destination name')
                 } else {
                 shipItinerary.push(port)
                 this.renderPorts(shipItinerary)
