@@ -1,12 +1,17 @@
 (function exportShip() {    
+
     class Ship {
         constructor(passengers, itinerary){
             this.passengers = passengers,
             this.itinerary = itinerary,
-            this.currentPort = itinerary.ports[0],
-            this.previousPort = null
-            this.currentPort.addShip(this)
-        }
+            this.previousPort = null;
+            if (this.itinerary.ports.length > 0) {
+                this.currentPort = itinerary.ports[0],
+                this.currentPort.addShip(this)
+            } else {
+                this.currentPort = null
+            };
+        }    
 
         boardPassengers(newPassengers){
             return this.passengers += newPassengers;
