@@ -1,0 +1,98 @@
+html {
+    height: 100%
+}
+
+body {
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#viewport {
+    width: 640px;
+    height: 256px;
+    position: relative;
+    overflow-x: auto;
+    background-image: url('../images/water0.png');
+}
+
+#ports {
+    margin-top: 96px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#ports > .port {
+    width: 64px;
+    height: 32px;
+    background-image: url('../images/port.png');
+}
+
+#ship {
+    width: 128px;
+    height: 64px;
+    position: absolute;
+    background-image: url('../images/ship.png');
+}
+
+#sailbutton {
+    width: 200px;
+    height: 26px;
+    font-family: 'Goldman', cursive;
+    font-weight: bold;
+    background-image: linear-gradient(to right, red, yellow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 75px;
+    margin-left: 220px;
+    position: fixed;
+}
+
+#message {
+    padding: 8px;
+    font-family: 'Goldman', cursive;
+    font-weight: bold;
+    width: 624px;
+    top: 0;
+    border-bottom: 1px solid lightgray;
+    background-color: black;
+    color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 275px;
+    position: fixed;
+}
+
+#headsUp {
+    padding: 100px;
+    width: 320px;
+    position:absolute;
+    top: 0;
+    right: 0;
+    font-family: 'Goldman', cursive;
+    background-color: black;
+    color: green;
+}
+
+#portForm {
+    padding: 100px;
+    width: 260px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Goldman', cursive;
+    background-color: black;
+    color: green;
+    border: 2px solid, green;
+}
+
+#addButton {
+    font-family: 'Goldman', cursive;
+    background-color: black;
+    color: red;
+    border: 2px solid, green;
+}
